@@ -14,7 +14,7 @@ class Prims {
         unreached.splice(0, 1);
 
         while(unreached.length > 0){
-            var record = 100000;//beginning the dist record is 10000
+            var record = Infinity;//beginning the dist record is 10000
             var rIndex;
             var uIndex;
             var eIndex;

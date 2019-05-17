@@ -2,9 +2,13 @@ class Node {
     constructor(position) {
         this.position = position;
         this.edges = [];
+        
+        // for dijkstra
+        this.value = Infinity;
+        this.prev = null;
     }
 
-    addEdge(neighbor) {
+    addEdge(neighbor, weight) {
         // return if edge already exists
         if(this.isConnectedTo(neighbor)) return;
 
@@ -12,7 +16,7 @@ class Node {
         if(this.position.equals(neighbor.position)) return;
 
         // calculate distance from new neighbor (edge weight)
-        const edgeWeight = dist(this.position.x, this.position.y,
+        const edgeWeight = weight ? weight : dist(this.position.x, this.position.y,
                         neighbor.position.x, neighbor.position.y);
 
         // create the new edge

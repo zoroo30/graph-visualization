@@ -24,10 +24,10 @@ class Graph {
         return newNode;
     }
 
-    addEdge(node1, node2) {
-        node1.addEdge(node2);
+    addEdge(node1, node2, weight) {
+        node1.addEdge(node2, weight);
         if (!this.isDirected)
-            node2.addEdge(node1);
+            node2.addEdge(node1, weight);
     }
 
     draw() {
