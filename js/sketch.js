@@ -4,20 +4,15 @@ let graph = new Graph(false);
 // only run ones when page is loaded
 function setup() {
   createCanvas(640, 360);
-
+  noLoop();
   //add some random nodes to the graph
-  graph = generateRandomGraph(50, 10, true)
+  //graph = generateRandomGraph(50, 10, true)
 }
 
 // draw loop
 function draw() {
   background(200);
   graph.draw();
-
-  if (!graph.isDirected)
-    // runs prim's 
-    Prims.run(graph);
-
 }
 
 // when mousePressed add new node in mouse position
@@ -27,6 +22,13 @@ function mousePressed() {
     graph.nodes.forEach(node => {
       graph.addEdge(newNode, node);
     });
+
+
+  if (!graph.isDirected)
+    // runs prim's 
+    Prims.run(graph);
+
+  draw();
 }
 
 function generateRandomGraph(numberOfNodes, numberOfEdges, isDirected) {

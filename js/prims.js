@@ -5,6 +5,9 @@ class Prims {
 
         for (var i = 0; i < graph.nodes.length; i++) {
             unreached.push(graph.nodes[i]);//beginning all the vertices are unreached
+            graph.nodes[i].edges.forEach(element => {
+                element.isBold = false;
+            });
         }
 
         reached.push(unreached[0]);//random point for the reached
@@ -14,6 +17,7 @@ class Prims {
             var record = 100000;//beginning the dist record is 10000
             var rIndex;
             var uIndex;
+            var eIndex;
 
             for (var i = 0; i < reached.length; i++) {
                 let edges = reached[i].edges;
@@ -29,15 +33,16 @@ class Prims {
                     if (d < record) {
                         record = d;//update the record to make the smallest dist in the record
                         rIndex = i;
+                        eIndex = j;
                         uIndex = unreachedIndex;
                     }
                 }
             }
 
-            stroke(255, 0, 0);
-            strokeWeight(2);
-
-            line(reached[rIndex].position.x, reached[rIndex].position.y, unreached[uIndex].position.x, unreached[uIndex].position.y);
+            // stroke(255, 0, 0);
+            // strokeWeight(2);
+            reached[rIndex].edges[eIndex].isBold = true;
+            //line(reached[rIndex].position.x, reached[rIndex].position.y, unreached[uIndex].position.x, unreached[uIndex].position.y);
     
             reached.push(unreached[uIndex]);//random point for the reached
             unreached.splice(uIndex, 1);

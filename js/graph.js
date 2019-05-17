@@ -7,7 +7,7 @@ class Graph {
     addNode(position) {
         // check if unique node
         let isUnique = true;
-        for(let node of this.nodes) {
+        for (let node of this.nodes) {
             if (node.position.equals(position)) {
                 isUnique = false;
                 break;
